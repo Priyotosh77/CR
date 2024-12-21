@@ -53,17 +53,35 @@
             font-weight: bold;
             margin-top: 30px;
         }
+        .voucher img {
+            width: 200px;
+            margin: 20px 0;
+        }
     </style>
+    <script>
+        // Function to generate a random unique code
+        function generateVoucherCode() {
+            const prefix = "CR";
+            const uniquePart = Math.random().toString(36).substring(2, 8).toUpperCase();
+            return `${prefix}${uniquePart}`;
+        }
+
+        // Update the voucher code on page load
+        window.onload = function () {
+            const voucherCodeElement = document.getElementById("voucher-code");
+            voucherCodeElement.textContent = "VOUCHER CODE: " + generateVoucherCode();
+        };
+    </script>
 </head>
 <body>
     <div class="voucher">
         <h1>SPECIALLY FOR YOU</h1>
         <h2>GIFT VOUCHER</h2>
-        <img src="CR.png" alt="Calcutta Retro Logo" style="width:200px; margin: 20px 0;">
+        <img src="cr.png" alt="Calcutta Retro Logo">
         <p>for any purchase in our store</p>
         <div class="amount">₹150</div>
         <p>VALID UNTIL March 2025</p>
-        <p class="code">VOUCHER CODE: CR0001</p>
+        <p class="code" id="voucher-code">VOUCHER CODE: </p>
         <p class="terms">Terms and conditions apply.</p>
     </div>
 </body>
